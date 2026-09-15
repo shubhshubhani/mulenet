@@ -92,9 +92,9 @@ export async function chat(messages, { json = false } = {}) {
     }
     return { ok: true, text };
   } catch (e) {
-    console.warn("[llm] fallback:", e.message);
-    return { ok: false, text: "", error: e.message };
-  }
+  console.warn("[llm] fallback:", e.message, e.cause || "");
+  return { ok: false, text: "", error: e.message };
+}
 }
 
 export function parseJson(text) {
